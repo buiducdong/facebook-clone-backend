@@ -7,7 +7,6 @@ const CommentSchema = mongoose.Schema(
     },
     postId: {
       type: String,
-      required: true,
     },
     comment: {
       type: String,
@@ -16,4 +15,4 @@ const CommentSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-module.export = mongoose.model('Comments', CommentSchema);
+module.exports = mongoose.model('Comments', CommentSchema);

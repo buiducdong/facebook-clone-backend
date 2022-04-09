@@ -6,6 +6,6 @@ router.post('/create', auth, PostCtrl.create);
 router.get('/getPost', PostCtrl.getAllPost);
 router.get('/getUserPost/:userId', PostCtrl.getUserPost);
 router.put('/:id/handleLike', PostCtrl.handleLikePost);
-router.post('/test/:idd', auth, PostCtrl.testt);
+router.delete('/delete/:postId', auth, PostCtrl.deletePost);
 
 module.exports = router;

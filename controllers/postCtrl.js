@@ -43,10 +43,16 @@ const postCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
-  testt: async (req, res) => {
+  deletePost: async (req, res) => {
     try {
-      const idd = req.params.idd;
-      return res.status(200).json(idd);
+      const userId = req.user.id;
+      const post = await Post.findById(req.params.postId);
+      if (userId === post.userId) {
+        await Post.deleteOne({ _id: req.params.postId });
+        res.status(200).json('The post has been deleted');
+      } else {
+        res.status(400).json('You can delete your post');
+      }
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
