@@ -52,6 +52,28 @@ const uploadCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+  uploadStory: async (req, res) => {
+    try {
+      const file = req.files.file;
+      cloudinary.v2.uploader.upload(
+        file.tempFilePath,
+        {
+          folder: 'facebook-clone/stories',
+          width: 300,
+          height: 500,
+          crop: 'fill',
+        },
+        async (err, result) => {
+          if (err) throw err;
+          removeTmp(file.tempFilePath);
+
+          res.status(200).json({ url: result.secure_url });
+        }
+      );
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
 };
 
 const removeTmp = (path) => {

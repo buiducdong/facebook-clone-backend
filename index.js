@@ -12,6 +12,7 @@ const userRouter = require('./routes/userRouter');
 const postRouter = require('./routes/postRouter');
 const uploadRouter = require('./routes/upload');
 const commentRouter = require('./routes/commentRouter');
+const storyRouter = require('./routes/storyRouter');
 
 //middleware
 app.use(express.json());
@@ -37,6 +38,7 @@ app.use('/user', userRouter);
 app.use('/post', postRouter);
 app.use('/comment', commentRouter);
 app.use('/upload', uploadRouter);
+app.use('/story', storyRouter);
 app.get('/', (req, res) => {
   res.send('server started');
 });
