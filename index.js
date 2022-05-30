@@ -45,5 +45,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log('server start on port ' + port);
+  console.log('server start');
 });
