@@ -15,8 +15,8 @@ const commentRouter = require('./routes/commentRouter');
 const storyRouter = require('./routes/storyRouter');
 
 //middleware
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 app.use(cookieParser());
 app.use(
   fileUpload({

@@ -3,9 +3,9 @@ const User = require('../models/User');
 
 const storyCtrl = {
   createStory: async (req, res) => {
-    const newStory = new Story(req.body);
+    const story = new Story(req.body);
     try {
-      const saveStory = await newStory.save();
+      const saveStory = await story.save();
       res.status(200).json(saveStory);
     } catch (err) {
       return res.status(500).json({ msg: err.message });
