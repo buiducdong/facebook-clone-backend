@@ -44,6 +44,6 @@ app.get('/', (req, res) => {
   res.send('server started');
 });
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 6000, () => {
   console.log('server start');
 });
