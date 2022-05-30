@@ -14,7 +14,7 @@ app.use(
     useTempFiles: true,
   })
 );
-const port = process.env.PORT || 7000;
+//const port = process.env.PORT || 7000;
 
 const { default: mongoose } = require('mongoose');
 
@@ -22,7 +22,7 @@ const { default: mongoose } = require('mongoose');
 const userRouter = require('./routes/userRouter');
 const postRouter = require('./routes/postRouter');
 const uploadRouter = require('./routes/upload');
-const commentRouter = require('./routes/commentRouter');
+const commentRouter = require('./routes/CommentRouter');
 const storyRouter = require('./routes/storyRouter');
 
 //connect to mongoDB
@@ -44,6 +44,6 @@ app.get('/', (req, res) => {
   res.send('server started');
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('server start on port ' + port);
 });
