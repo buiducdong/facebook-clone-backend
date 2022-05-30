@@ -3,20 +3,18 @@ const app = express();
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
+const { default: mongoose } = require('mongoose');
 require('dotenv').config();
 
 //middleware
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 app.use(cookieParser());
 app.use(
   fileUpload({
     useTempFiles: true,
   })
 );
-//const port = process.env.PORT || 7000;
-
-const { default: mongoose } = require('mongoose');
 
 //router
 const userRouter = require('./routes/userRouter');
@@ -44,6 +42,6 @@ app.get('/', (req, res) => {
   res.send('server started');
 });
 
-app.listen(process.env.PORT || 6000, () => {
+app.listen(process.env.PORT || 7000, () => {
   console.log('server start');
 });
