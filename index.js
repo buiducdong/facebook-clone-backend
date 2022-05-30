@@ -5,15 +5,6 @@ const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
 require('dotenv').config();
 
-const { default: mongoose } = require('mongoose');
-
-//router
-const userRouter = require('./routes/userRouter');
-const postRouter = require('./routes/postRouter');
-const uploadRouter = require('./routes/upload');
-const commentRouter = require('./routes/commentRouter');
-const storyRouter = require('./routes/storyRouter');
-
 //middleware
 app.use(cors());
 app.use(express.json());
@@ -23,6 +14,16 @@ app.use(
     useTempFiles: true,
   })
 );
+const port = process.env.PORT || 7000;
+
+const { default: mongoose } = require('mongoose');
+
+//router
+const userRouter = require('./routes/userRouter');
+const postRouter = require('./routes/postRouter');
+const uploadRouter = require('./routes/upload');
+const commentRouter = require('./routes/commentRouter');
+const storyRouter = require('./routes/storyRouter');
 
 //connect to mongoDB
 mongoose
@@ -43,7 +44,6 @@ app.get('/', (req, res) => {
   res.send('server started');
 });
 
-const PORT = process.env.PORT || 7000;
-app.listen(PORT, () => {
-  console.log('server start on port ' + PORT);
+app.listen(port, () => {
+  console.log('server start on port ' + port);
 });
