@@ -13,7 +13,10 @@ const storyCtrl = {
   },
   getAllStory: async (req, res) => {
     try {
-      const stories = await Story.find();
+      const stories = await Story.find().populate({
+        path: 'User',
+        strictPopulate: false,
+      });
       res.status(200).json(stories);
     } catch (err) {
       return res.status(500).json({ msg: err.message });

@@ -90,7 +90,6 @@ const userCtrl = {
 
       jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
         if (err) return res.status(400).json({ msg: 'Please login now!' });
-
         const access_token = createAccessToken({ id: user.id });
         res.json({ access_token });
       });
@@ -225,7 +224,7 @@ const createActivationToken = (payload) => {
 };
 
 const createAccessToken = (payload) => {
-  return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
+  return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15d' });
 };
 
 const createRefreshToken = (payload) => {

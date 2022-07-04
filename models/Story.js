@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const StorySchema = new mongoose.Schema(
   {
     userId: {
-      type: String,
-      required: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
     },
     image: {
       type: String,
